@@ -1,0 +1,19 @@
+{
+  "name": "Geckos-Team-19",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/chingu-voyage7/Geckos-Team-19.git",
+  "author": "Gebec <gebec.m@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "next-url-prettifier": "^1.4.0",
+    "pg-promise": "^8.5.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}

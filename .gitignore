@@ -1,0 +1,6 @@
+*.log
+/node_modules
+/.next
+
+# database connection
+/config/database.js
