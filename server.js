@@ -1,17 +1,28 @@
 const express = require('express');
 const pgp = require('pg-promise')();
-const {username, password, host, port, database} = require('./config/database.js');
+const next = require('next');
+const Router = require('./routes').Router;
 
-const app = express();
-const appPort = 3000;
-const db = pgp(`postgres://${username}:${password}@${host}:${port}/${database}`);
+const dev = process.env.NODE_ENV !== 'production';
+const appPort = parseInt(process.env.PORT, 10) || 3000;
+const app = next({ dev });
+const {login, password, host, port, database} = require('./config/database.js');
 
-if (db) {
+app.prepare().then(() => {
+  const server = express();
+  const db = pgp(`postgres://${login}:${password}@${host}:${port}/${database}`);
+
+  if (db) {
     console.log('Connection to database established!');
-} else {
+  } else {
     console.log('Error while connecting to database!');
-}
+  }
 
-app.get('/', (req, res) => res.send('Gecko team 19 ROCKS!'));
+  Router.forEachPattern((page, pattern, defaultParams) => {
+    server.get(pattern, (req, res) => {
+      app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params));
+    });
+  });
 
-app.listen(appPort, () => console.log(`Example app listening on port ${appPort}!`));
+  server.listen(appPort, () => `Listening on ${appPort}`);
+})
