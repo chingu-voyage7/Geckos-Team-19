@@ -10,15 +10,15 @@ OR
 npm install
 ```
 
-###Setting up database
-Create datbase.js config file
+### Database connection
+* Create database.js config file
 ```
 cp ./config/database-sample.js ./config/database.js
 ```
 
 * Edit ./config/database.js and fill valid values
 
-* Running the server
+### Running the server
 ```
 yarn server
 ```
