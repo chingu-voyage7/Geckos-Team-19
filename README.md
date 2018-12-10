@@ -13,16 +13,26 @@ npm install
 ### Database connection
 * Create database.js config file
 ```
-cp ./config/database-sample.js ./config/database.js
+cp .env-sample .env
 ```
 
-* Edit ./config/database.js and fill valid values
+* Edit .env and change 'change_me' strings to  valid values
 
 ### Running the server
+Starting the server
 ```
 yarn server
 ```
 OR
 ```
 npm run server
+```
+
+Full project setup
+```
+yarn setup
+```
+OR
+```
+npm run setup
 ```
