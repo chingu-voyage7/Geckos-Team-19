@@ -21,7 +21,7 @@ exports.up = function (db, callback) {
       project_id: {
         type: 'int',
         notNull: true,
-        foreignKye: {
+        foreignKey: {
           name: 'project_project_teams_foreign',
           table: 'projects',
           mapping: 'id',
@@ -34,7 +34,7 @@ exports.up = function (db, callback) {
       team_id: {
         type: 'int',
         notNull: true,
-        foreignKye: {
+        foreignKey: {
           name: 'team_project_teams_foreign',
           table: 'teams',
           mapping: 'id',
