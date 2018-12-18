@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/hp_layout";
 
 const Index = () => (
   <Layout title="Home">
