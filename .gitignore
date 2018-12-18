@@ -1,6 +1,11 @@
 *.log
 /node_modules
 /.next
+/build
 
 # env
 .env
+
+#packages
+yarn.lock
+package-lock.json

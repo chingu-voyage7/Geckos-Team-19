@@ -1,16 +1,21 @@
-import Link from "next/link";
+import Head from 'next/head'
+import Navbar from './navbar'
 
 export default ({ children, title }) => (
   <div>
+    <Head>
+      <title>{ title }</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta charSet='utf-8' />
+    </Head>
+
     <header>
-      <Link href="/"><a>Home</a></Link>
-      <Link href="/developer"><a>Developer</a></Link>
-      <Link href="/organisation"><a>Organisation</a></Link>
-      <Link href="/project"><a>Project</a></Link>
-      <Link href="/team"><a>Team</a></Link>
+      <Navbar />
     </header>
+
     <h1>{ title }</h1>
     { children }
+
     <footer>Footer</footer>
   </div>
 )

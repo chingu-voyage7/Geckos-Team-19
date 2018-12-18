@@ -1,38 +1,52 @@
 # Geckos-Team-19
 
-## Project setup
-### Install dependencies
-```
-yarn
-```
-OR
-```
-npm install
-```
-
-### Database connection
-* Create database.js config file
+## Set database connection
+* Create .env config file
 ```
 cp .env-sample .env
 ```
 
-* Edit .env and change 'change_me' strings to  valid values
+* Edit .env and change all 'change_me' strings to  valid values
 
-### Running the server
-Starting the server
-```
-yarn server
-```
-OR
-```
-npm run server
-```
+## Automatic project setup
+* **Recomended procedure**
 
-Full project setup
+This will install all dependencies, run migrations and start the server - all in one command
 ```
 yarn setup
 ```
-OR
+*OR*
 ```
 npm run setup
+```
+
+## Manual project setup
+* Alternatively you can run commands one by one
+
+### Installing dependencies
+```
+yarn
+```
+*OR*
+```
+npm install
+```
+
+### Running migrations
+```
+yarn migrate
+```
+*OR*
+```
+npm run migrate
+```
+
+### Running the server
+* Starting the server
+```
+yarn server
+```
+*OR*
+```
+npm run server
 ```
