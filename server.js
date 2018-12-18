@@ -4,11 +4,14 @@ const next = require('next');
 const Router = require('./routes').Router;
 
 const dev = process.env.NODE_ENV !== 'production';
-const appPort = parseInt(process.env.PORT, 10) || 3000;
 const app = next({ dev });
-const {login, password, host, port, database} = require('./config/database.js');
+const port = parseInt(process.env.PORT, 10) || 3000;
 
-const db = pgp(`postgres://${login}:${password}@${host}:${port}/${database}`);
+if (dev) {
+  require('dotenv').load();
+}
+
+const db = pgp(`postgres://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_DB}`);
 db.connect()
   .then(r => { // TODO: rename and use the param
     app.prepare().then(() => {
@@ -20,7 +23,7 @@ db.connect()
         });
       });
 
-      server.listen(appPort, () => `Listening on ${appPort}`);
+      server.listen(port, () => `Listening on ${port}`);
     })
   })
   .catch(err => {
