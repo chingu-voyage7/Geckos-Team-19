@@ -12,6 +12,10 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: ['babel-loader', 'raw-loader', 'postcss-loader']
+      },
+      {
         test: /\.scss$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader',
           {
@@ -27,11 +31,5 @@ module.exports = {
       }
     );
     return config;
-  },
-  exportPathMap() {
-    return {
-      '/': { page: '/' }
-    };
-  },
-  distDir: 'build'
-};
+  }
+}

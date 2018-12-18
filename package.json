@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "autoprefixer": "^9.4.3",
+    "babel-loader": "^8.0.4",
     "db-migrate": "^0.11.4",
     "db-migrate-pg": "^0.4.0",
     "dotenv": "^6.2.0",
@@ -20,6 +21,7 @@
     "next-url-prettifier": "^1.4.0",
     "node-sass": "^4.11.0",
     "pg-promise": "^8.5.2",
+    "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^1.0.0",
     "react": "^16.6.3",

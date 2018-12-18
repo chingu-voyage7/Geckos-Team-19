@@ -1,11 +1,12 @@
 const express = require('express');
 const pgp = require('pg-promise')();
-const next = require('./next');
-
+const next = require('next');
+const Router = require('./routes').Router;
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = express();
 const port = parseInt(process.env.PORT, 10) || 3000;
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 if (dev) {
   require('dotenv').load();
@@ -14,15 +15,21 @@ if (dev) {
 const db = pgp(`postgres://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_DB}`);
 
 db.connect()
-  .then(() => {
-    server(port);
+  .then(r => { // TODO: rename and use the param
+    app.prepare().then(() => {
+      const server = express();
+
+      Router.forEachPrettyPattern((page, pattern, defaultParams) => {
+        server.get(pattern, (req, res) => {
+          app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params));
+        });
+      });
+
+      // All the rest, also all the static stuff
+      server.get('*', (req, res) => handle(req, res));
+      server.listen(port, () => `Listening on ${port}`);
+    })
   })
   .catch(err => {
     console.log(`Error while connecting to database! Error: ${err}`);
   });
-
-const server = async(port) => {
-
-  await next(app);
-  app.listen(port, () => `Listening on ${port}`);
-};
