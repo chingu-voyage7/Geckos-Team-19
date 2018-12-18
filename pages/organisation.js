@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/hp_layout";
 
 const Organisation = () => (
   <Layout title="Organisation">

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import commonStyles from '../static/common.scss';
+import SimpleLink from '../base_components/simpleLink';
+import styles from '../../styles/Components/navbar.scss';
 
-function Navbar() {
+export default function Navbar() {
   const baseClass = "navbar";
   const imgUrl = "https://www.freelogodesign.org/Content/img/slide-logo-1.png";
   const bgImage = {
@@ -17,21 +17,16 @@ function Navbar() {
 
   return (
     <div>
-      <style dangerouslySetInnerHTML={{ __html: commonStyles }} />
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
 
       <div className = { baseClass }>
         <div className = { baseClass + '__logo' }>
           <div className = { baseClass + '__logo__img' } style={ bgImage }></div>
         </div>
         <div className = { baseClass + '__links' }>
-          { links.map(el => {
-              return <Link href= { el.href } key={ el.text }><a>{ el.text} </a></Link>
-            })
-          }
+          { links.map(el => <SimpleLink data={ el } />)}
         </div>
       </div>
     </div>
   )
 }
-
-export default Navbar;
