@@ -1,0 +1,15 @@
+.header {
+  background-size: cover;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+
+  padding: 5rem;
+  text-align: center;
+
+  // TODO: change it and do it more atomic, man!
+  color: DeepSkyBlue;
+
+  & > * + * {
+    padding-top: 2rem;
+  }
+}
