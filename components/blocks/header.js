@@ -3,7 +3,7 @@ import styles from '../../styles/Components/header.scss';
 export default function () {
   const baseClass = "header";
   const content = {
-    header: "Connect",
+    header: process.env.PROJECT_NAME,
     description: "We'll Find You The Perfect Volunteers For Your Web App Non-profit Projects",
     image: '/static/header_image.jpg',
   }

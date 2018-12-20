@@ -5,23 +5,26 @@ import Header from './blocks/header';
 
 import styles from '../styles/Layouts/pageLayout.scss';
 
-export default ({ children, title }) => (
-  <div className="pageWrapper">
-    <Head>
-      <title>{ title }</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta charSet='utf-8' />
-      <style dangerouslySetInnerHTML={{ __html: styles }} />
-    </Head>
+export default function HP_layout() {
+  return (
+    <div className="pageWrapper">
+      <Head>
+        <title>{ process.env.PROJECT_NAME }</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet='utf-8' />
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
+      </Head>
 
-    <Navbar />
-    <Header />
+      <Navbar />
+      <Header />
 
-    <div className="content">
-      <h1>{ title }</h1>
-      { children }
+      <div className="content">
+        <span>Intro</span>
+        <span>Roadmap</span>
+        <span>Register</span>
+      </div>
+
+      <Footer />
     </div>
-
-    <Footer />
-  </div>
-)
+  )
+}

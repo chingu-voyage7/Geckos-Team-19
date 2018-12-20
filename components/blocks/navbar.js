@@ -24,7 +24,7 @@ export default function Navbar() {
           <div className = { baseClass + '__logo__img' } style={ bgImage }></div>
         </div>
         <div className = { baseClass + '__links' }>
-          { links.map(el => <SimpleLink data={ el } />)}
+          { links.map(el => <SimpleLink data={ el } key={ el.href } />)}
         </div>
       </div>
     </div>

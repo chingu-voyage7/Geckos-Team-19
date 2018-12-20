@@ -20,7 +20,7 @@ export default function Footer() {
         { footerText }
       </div>
       <div className= { baseClass + '__links'}>
-        { links.map(el => <ImageLink data={ el } />)}
+        { links.map(el => <ImageLink data={ el } key={ el.href } />)}
       </div>
     </footer>
   )
