@@ -8,6 +8,19 @@ cp .env-sample .env
 
 * Edit .env and change all 'change_me' strings to  valid values
 
+## Create project database
+To unify database name across all users, it's recommended to use one database name. To achive this, it is needed to have fully setup postgres db or create the db manualy.
+
+Creates `nonprofit` database
+```
+yarn create-db
+```
+
+When any error appears, the db is not configured properly. Troubleshooting steps can be found here: https://www.postgresql.org/docs/11/tutorial-createdb.html.
+
+_Or you can simply create the db manually..._
+
+
 ## Automatic project setup
 * **Recomended procedure**
 
